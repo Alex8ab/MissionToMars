@@ -106,12 +106,24 @@ def scrape_mars_facts():
     facts_df.columns = ['description', 'value']
 
     # Set index
-    facts_df.set_index('description', inplace=True)
+    facts_df.set_index(['description', 'value'], inplace=True)
     
     # Append Facts 
     mars_info["mars_facts"] = facts_df.to_html()
     
     return mars_info
+
+# Mars Weather 
+def scrape_mars_weather():
+
+    # Tweeter pag was unreachable so the data is hardcoded
+    mars_weather="Sol 3061 (2021-03-17), high -13C/9F, low -74C/-101F, pressure at 8.37 hPa, daylight 06:31-18:26"
+    # Add weather mars
+    mars_info["mars_weather"] = mars_weather
+    
+    return mars_info
+   
+
 
 # Mars Hemispheres
 def scrape_mars_hemispheres():

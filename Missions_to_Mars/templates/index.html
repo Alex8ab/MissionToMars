@@ -5,12 +5,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scrape Mars</title>
+    <!-- Icon for tab -->
+    <link rel="icon" href="/static/images/nasa.png">
 
-
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 </head>
 <body>
+    <!-- Nav Bar -->
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Mission to Mars</a>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+    </nav>
+    <br>
+    
+    <div class="container-fluid">
+        <!-- Jumbotron -->
+        <div class="jumbotron">
+            <h1 class="display-4" style="text-align: center;"><strong>MISSION TO MARS</strong></h1>
+            <h4  style="text-align: center; TE"> Web application that scrapes various websites for data related to the Mission to Mars and displays the information</h4>
+            <p  style="text-align: center;"><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+        </div>
+        <!-- Row for News and Facts -->
+        <div class="row">
+            <!-- Mars News -->
+            <div class="card col-lg-6">
+                <div class="card-header" style="text-align: center;">                    
+                    <h2><strong>NASA Mars News</strong></h2>
+                </div>
+                <div class="card-body" style="margin-left: auto; margin-right: auto;">
+                    <h6><strong>{{ mars_info.news_title }}</strong></h6>
+                    <p>{{ mars_info.news_paragraph }}</p>
+                </div>
+                <!-- Mars Weather -->
+                <div class="card-header" style="text-align: center;">                    
+                    <h2><strong>Mars Weather</strong></h2>
+                </div>
+                <div class="card-body" style="margin-left: auto; margin-right: auto;">
+                    <p>{{mars_info.mars_weather}}</p>
+                </div>
+            </div>
+            <!-- Mars Facts -->
+            <div class="card col-lg-6">
+                <div class="card-header" style="text-align: center;">
+                    <h2><strong>Mars Facts</strong></h2>
+                </div>
+                <div class="card-body" style="margin-left: auto; margin-right: auto;">
+                    {{mars_info.mars_facts | safe}}
+                </div>
+            </div>
+        </div> <!-- End of Row for News and Facts -->
+        <br>
+        <!-- Row for images -->
+        <div class="row">
+            <!-- Featured Mars Image -->
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="card-header" style="text-align: center;">
+                    <h2><strong>Featured Mars Image</strong></h2>
+                </div>
+                <div class="card-body " style="margin-left: auto; margin-right: auto;">
+                    <img src="{{ mars_info.featured_image_url }}" width = "25%" height = "25%" alt="Featured Mars Image" >
+                </div> 
+            </div>
+            <!-- Mars Hemispheres -->
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="card-header" style="text-align: center;">
+                    <h2><strong>Mars Hemispheres</strong></h2>
+                </div>
+                <div class="card-body" style="margin-left: auto; margin-right: auto;">
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <p class="card-text"><h6><strong>{{ mars_info.hemispheres_image_urls[0]["title"] }}</strong></h6></p>                            
+                            <img class="card-img-top" src="{{mars_info.hemispheres_image_urls[0]['img_url']}}" alt="Hemisphere Mars Image"  width = "200"/>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="card-text"><h6><strong>{{ mars_info.hemispheres_image_urls[1]["title"] }}</strong></h6></p>
+                            <img class="card-img-top" src="{{mars_info.hemispheres_image_urls[1]['img_url']}}" alt="Hemisphere Mars Image"  width = "200"/>                            
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 30px;">
+                        <div class="col-md-6">
+                            <p class="card-text"><h6><strong>{{ mars_info.hemispheres_image_urls[2]["title"] }}</strong></h6></p>
+                            <img class="card-img-top" src="{{mars_info.hemispheres_image_urls[2]['img_url']}}" alt="Hemisphere Mars Image"  width = "200"/>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="card-text"><h6><strong>{{ mars_info.hemispheres_image_urls[3]["title"] }}</strong></h6></p>
+                            <img class="card-img-top" src="{{mars_info.hemispheres_image_urls[3]['img_url']}}" alt="Hemisphere Mars Image"  width = "200"/>
+                        </div>
+                  </div>
+                </div>
+            </div>
+         </div> <!-- End of Row for Images -->
+    </div>
     
 </body>
 </html>

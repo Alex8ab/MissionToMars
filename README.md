@@ -16,4 +16,8 @@ Web application that scrapes various websites for data related to the Mission to
 - Create a Flask application that query a Mongo database.
 - Create a HTML page to display the scraped data from the Mongo dtabase.
 
+
+![News part](/Missions_to_Mars/Mission_to_Mars_Web_News.png?raw=true)
+
+
 ![Images part](/Missions_to_Mars/Mission_to_Mars_Web_Images.png?raw=true)
